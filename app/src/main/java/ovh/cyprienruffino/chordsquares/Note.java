@@ -57,6 +57,22 @@ public class Note{
         }
     }
 
+    public static Alteration alterationFromString(String string){
+        switch (string) {
+            case "":
+                return Alteration.NATURAL;
+            case "b":
+                return Alteration.FLAT;
+            case "bb":
+                return Alteration.DOUBLEFLAT;
+            case "#":
+                return Alteration.SHARP;
+            case "##":
+                return Alteration.DOUBLESHARP;
+            default:
+                return null;
+        }
+    }
     public static ArrayList<RawNote> notes = new ArrayList<>(Arrays.asList(
             RawNote.C, RawNote.D, RawNote.E, RawNote.F, RawNote.G, RawNote.A, RawNote.B));
 
@@ -66,6 +82,11 @@ public class Note{
     public Note(RawNote note, Alteration alteration){
         this.note = note;
         this.alteration = alteration;
+    }
+
+    public Note(String noteString){
+        this.note = RawNote.valueOf(noteString.substring(0,1));
+        this.alteration = alterationFromString(noteString.substring(1));
     }
 
     @Override
