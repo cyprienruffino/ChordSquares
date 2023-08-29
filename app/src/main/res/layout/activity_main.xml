@@ -93,7 +93,15 @@
                     android:textSize="32sp"
                     android:textStyle="bold|italic"
                     android:text="1" />
+
             </LinearLayout>
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0"
+                android:background="?android:attr/listDivider" />
 
             <LinearLayout
                 android:id="@+id/root"
@@ -132,6 +140,12 @@
                     android:minWidth="48dp"
                     android:minHeight="48dp"
                     tools:ignore="SpeakableTextPresentCheck" />
+
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider" />
 
                 <TextView
                     android:id="@+id/htext1"
@@ -183,6 +197,12 @@
                     android:minHeight="48dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider" />
+
                 <TextView
                     android:id="@+id/htext3"
                     android:layout_width="match_parent"
@@ -207,7 +227,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
-                    android:minHeight="48dp" />
+                    android:minHeight="48dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <Spinner
                     android:id="@+id/spinner53"
@@ -232,6 +253,12 @@
                     android:minWidth="48dp"
                     android:minHeight="48dp"
                     tools:ignore="SpeakableTextPresentCheck" />
+
+                <View
+                    android:id="@+id/divider6"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider" />
 
                 <TextView
                     android:id="@+id/htext5"
@@ -283,6 +310,12 @@
                     android:minHeight="48dp"
                     tools:ignore="SpeakableTextPresentCheck" />
 
+                <View
+                    android:id="@+id/divider5"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?android:attr/listDivider" />
+
                 <TextView
                     android:id="@+id/htext7"
                     android:layout_width="match_parent"
@@ -317,6 +350,13 @@
                 android:text="Reset" />
 
             <Button
+                android:id="@+id/button_solution"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="Solution" />
+
+            <Button
                 android:id="@+id/button_random"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -331,6 +371,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="0"
             android:text="Advanced chords" />
+
 
     </LinearLayout>
 

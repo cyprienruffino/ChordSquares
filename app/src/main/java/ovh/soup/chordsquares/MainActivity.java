@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.Spinner;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,48 +32,25 @@ public class MainActivity extends AppCompatActivity {
     private ArrayAdapter<String> spinnersAdapter;
     private String[] availableNotes;
 
-    private static Nature[] basicNatures = {new Major(), new NaturalMinor(), new Seventh()};
-    private static Nature[] advancedNatures = {new Major(), new NaturalMinor(), new Seventh(), new MinorMajorSeventh(), new HalfDiminished(), new Diminished(), new AugmentedSeventh()};
+    private static final Nature[] basicNatures = {new Major(), new NaturalMinor(), new Seventh()};
+    private static final Nature[] advancedNatures = {new Major(), new NaturalMinor(), new Seventh(), new MinorMajorSeventh(), new HalfDiminished(), new Diminished(), new AugmentedSeventh()};
     private Nature[] natures = basicNatures;
 
     private Note currentNote;
     private Nature currentNature;
+    private String[] noteStringArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.button_check).setOnClickListener(v -> {
-            boolean[][] results = checkChord();
-            for (int i=0; i< spinnerGrid.length; i++) {
-                for (int j = 0; j < spinnerGrid[0].length; j++) {
-                    if (results[i][j]){
-                        spinnerGrid[i][j].setBackgroundColor(Color.GREEN);
-                    }
-                    else{
-                        spinnerGrid[i][j].setBackgroundColor(Color.RED);
-                    }
-                }
-            }
-        });
+        findViewById(R.id.button_check).setOnClickListener(this::buttonCheckOnClick);
+        findViewById(R.id.button_solution).setOnClickListener(this::buttonSolutionOnClick);
         findViewById(R.id.button_reset).setOnClickListener(v -> resetGrid());
-        findViewById(R.id.button_random).setOnClickListener(v -> {
-            this.currentNote = new Note(
-                    Note.RawNote.values()[new Random().nextInt(Note.RawNote.values().length)],
-                    Note.Alteration.values()[new Random().nextInt(Note.Alteration.values().length - 2)] // ignore doubleflats / doublesharps
-            );
-            ((Spinner)findViewById(R.id.notespinner)).setSelection(Arrays.asList(availableNotes).indexOf(currentNote.toString()));
+        findViewById(R.id.button_random).setOnClickListener(this::buttonRandomOnClick);
 
-            int pickedNature = new Random().nextInt(natures.length);
-            this.currentNature = natures[pickedNature];
-            ((Spinner)findViewById(R.id.naturespinner)).setSelection(pickedNature);
-            resetGrid();
-        });
-        ((CheckBox)findViewById(R.id.checkBoxAdvanced)).setOnCheckedChangeListener((buttonView, isChecked) -> {
-            natures = isChecked ? advancedNatures : natures;
-            populateNatures();
-        });
+        ((CheckBox)findViewById(R.id.checkBoxAdvanced)).setOnCheckedChangeListener(this::checkBoxAdvancedOnClick);
         ((Spinner) findViewById(R.id.notespinner)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -134,14 +112,15 @@ public class MainActivity extends AppCompatActivity {
                         findViewById(R.id.spinner77),
                 }
         };
-        ArrayList<String> noteStringArray = new ArrayList<>();
-        noteStringArray.add("");
+        ArrayList<String> noteStringArrayList = new ArrayList<>();
+        noteStringArrayList.add("");
         for (Note.RawNote note: Note.RawNote.values()){
             for (Note.Alteration alteration: Note.Alteration.values()){
-                noteStringArray.add(note.toString() + alteration.toString());
+                noteStringArrayList.add(note.toString() + alteration.toString());
             }
         }
-        spinnersAdapter = new ArrayAdapter<>(this, R.layout.spinner_list, noteStringArray.toArray(new String[0]));
+        noteStringArray = noteStringArrayList.toArray(new String[0]);
+        spinnersAdapter = new ArrayAdapter<>(this, R.layout.spinner_list, noteStringArray);
         for (Spinner[] spinners : spinnerGrid) {
             for (Spinner spinner : spinners) {
                 spinner.setAdapter(spinnersAdapter);
@@ -189,6 +168,26 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private Note[][] computeNotes() {
+        Note[][] values = new Note[spinnerGrid.length][spinnerGrid[0].length];
+
+        Chord[] chords = {
+                Chord.fromRoot(currentNote, currentNature),
+                Chord.fromThird(currentNote, currentNature),
+                Chord.fromFifth(currentNote, currentNature),
+                Chord.fromSeventh(currentNote, currentNature),
+        };
+
+        for (int i=0; i<spinnerGrid.length; i++) {
+            values[i][3] = chords[i].root;
+            values[i][2] = chords[i].third;
+            values[i][1] = chords[i].fifth;
+            values[i][0] = chords[i].seventh;
+        }
+
+        return values;
+    }
+
     private boolean[][] checkChord(){
         boolean[][] values = new boolean[spinnerGrid.length][spinnerGrid[0].length];
 
@@ -209,4 +208,44 @@ public class MainActivity extends AppCompatActivity {
         return values;
     }
 
+    private void buttonCheckOnClick(View v) {
+        boolean[][] results = checkChord();
+        for (int i = 0; i < spinnerGrid.length; i++) {
+            for (int j = 0; j < spinnerGrid[0].length; j++) {
+                if (results[i][j]) {
+                    spinnerGrid[i][j].setBackgroundColor(Color.GREEN);
+                } else {
+                    spinnerGrid[i][j].setBackgroundColor(Color.RED);
+                }
+            }
+        }
+    }
+
+    private void buttonSolutionOnClick(View v) {
+        Note[][] results = computeNotes();
+        for (int i = 0; i < spinnerGrid.length; i++) {
+            for (int j = 0; j < spinnerGrid[0].length; j++) {
+                spinnerGrid[i][j].setSelection(Arrays.asList(noteStringArray).indexOf(results[i][j].toString()));
+                ;
+            }
+        }
+    }
+
+    private void buttonRandomOnClick(View v) {
+        this.currentNote = new Note(
+                Note.RawNote.values()[new Random().nextInt(Note.RawNote.values().length)],
+                Note.Alteration.values()[new Random().nextInt(Note.Alteration.values().length - 2)] // ignore doubleflats / doublesharps
+        );
+        ((Spinner) findViewById(R.id.notespinner)).setSelection(Arrays.asList(availableNotes).indexOf(currentNote.toString()));
+
+        int pickedNature = new Random().nextInt(natures.length);
+        this.currentNature = natures[pickedNature];
+        ((Spinner) findViewById(R.id.naturespinner)).setSelection(pickedNature);
+        resetGrid();
+    }
+
+    private void checkBoxAdvancedOnClick(CompoundButton buttonView, boolean isChecked) {
+        natures = isChecked ? advancedNatures : natures;
+        populateNatures();
+    }
 }
