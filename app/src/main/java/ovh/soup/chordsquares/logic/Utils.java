@@ -1,4 +1,4 @@
-package ovh.soup.chordsquares;
+package ovh.soup.chordsquares.logic;
 
 public class Utils {
     public static int mod(int x, int y)

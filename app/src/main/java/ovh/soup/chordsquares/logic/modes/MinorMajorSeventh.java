@@ -1,6 +1,6 @@
-package ovh.soup.chordsquares.mode;
+package ovh.soup.chordsquares.logic.modes;
 
-import ovh.soup.chordsquares.Nature;
+import ovh.soup.chordsquares.logic.Nature;
 
 public class MinorMajorSeventh extends Nature {
     public MinorMajorSeventh(){

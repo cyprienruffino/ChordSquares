@@ -1,4 +1,4 @@
-package ovh.soup.chordsquares;
+package ovh.soup.chordsquares.logic;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -36,7 +36,7 @@ public class Note{
                 case 4:
                     return "##";
                 default:
-                    return null;
+                    return "";
             }
         }
         public Integer value(){
@@ -52,7 +52,7 @@ public class Note{
                 case 4:
                     return 2;
                 default:
-                    return null;
+                    return 0;
             }
         }
     }

@@ -7,7 +7,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,13 +14,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
-import ovh.soup.chordsquares.mode.AugmentedSeventh;
-import ovh.soup.chordsquares.mode.Diminished;
-import ovh.soup.chordsquares.mode.HalfDiminished;
-import ovh.soup.chordsquares.mode.Major;
-import ovh.soup.chordsquares.mode.Seventh;
-import ovh.soup.chordsquares.mode.NaturalMinor;
-import ovh.soup.chordsquares.mode.MinorMajorSeventh;
+import ovh.soup.chordsquares.logic.Chord;
+import ovh.soup.chordsquares.logic.Nature;
+import ovh.soup.chordsquares.logic.Note;
+import ovh.soup.chordsquares.logic.modes.AugmentedSeventh;
+import ovh.soup.chordsquares.logic.modes.Diminished;
+import ovh.soup.chordsquares.logic.modes.HalfDiminished;
+import ovh.soup.chordsquares.logic.modes.Major;
+import ovh.soup.chordsquares.logic.modes.Seventh;
+import ovh.soup.chordsquares.logic.modes.NaturalMinor;
+import ovh.soup.chordsquares.logic.modes.MinorMajorSeventh;
 
 public class MainActivity extends AppCompatActivity {
 

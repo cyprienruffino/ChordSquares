@@ -1,4 +1,4 @@
-package ovh.soup.chordsquares;
+package ovh.soup.chordsquares.logic;
 
 
 import java.util.ArrayList;
