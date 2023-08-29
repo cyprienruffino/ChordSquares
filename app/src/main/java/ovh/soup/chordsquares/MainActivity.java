@@ -241,7 +241,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkBoxAdvancedOnClick(CompoundButton buttonView, boolean isChecked) {
-        natures = isChecked ? advancedNatures : natures;
+        natures = isChecked ? advancedNatures : basicNatures;
         populateNatures();
     }
 }
