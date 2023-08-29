@@ -1,4 +1,4 @@
-package ovh.cyprienruffino.chordsquares;
+package ovh.soup.chordsquares;
 
 public class Utils {
     public static int mod(int x, int y)

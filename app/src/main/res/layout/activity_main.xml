@@ -11,11 +11,32 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/modespinner"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:minHeight="32dp" />
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/notespinner"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:minHeight="32dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <Spinner
+                android:id="@+id/naturespinner"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:minHeight="32dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="?android:attr/listDivider" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,6 +56,9 @@
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
                     android:minHeight="48dp"
+                    android:padding="10dp"
+                    android:textSize="32sp"
+                    android:textStyle="bold|italic"
                     android:text="7" />
 
                 <TextView
@@ -43,6 +67,9 @@
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
                     android:minHeight="48dp"
+                    android:padding="10dp"
+                    android:textSize="32sp"
+                    android:textStyle="bold|italic"
                     android:text="5" />
 
                 <TextView
@@ -51,6 +78,9 @@
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
                     android:minHeight="48dp"
+                    android:padding="10dp"
+                    android:textSize="32sp"
+                    android:textStyle="bold|italic"
                     android:text="3" />
 
                 <TextView
@@ -59,6 +89,9 @@
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
                     android:minHeight="48dp"
+                    android:padding="10dp"
+                    android:textSize="32sp"
+                    android:textStyle="bold|italic"
                     android:text="1" />
             </LinearLayout>
 
@@ -73,28 +106,32 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
-                    android:minHeight="48dp" />
+                    android:minHeight="48dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <Spinner
                     android:id="@+id/spinner13"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
-                    android:minHeight="48dp" />
+                    android:minHeight="48dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <Spinner
                     android:id="@+id/spinner15"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
-                    android:minHeight="48dp" />
+                    android:minHeight="48dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <Spinner
                     android:id="@+id/spinner17"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
-                    android:minHeight="48dp" />
+                    android:minHeight="48dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
                     android:id="@+id/htext1"
@@ -102,6 +139,9 @@
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
                     android:minHeight="48dp"
+                    android:padding="10dp"
+                    android:textSize="32sp"
+                    android:textStyle="bold|italic"
                     android:text="1" />
             </LinearLayout>
 
@@ -116,28 +156,32 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
-                    android:minHeight="48dp" />
+                    android:minHeight="48dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <Spinner
                     android:id="@+id/spinner33"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
-                    android:minHeight="48dp" />
+                    android:minHeight="48dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <Spinner
                     android:id="@+id/spinner35"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
-                    android:minHeight="48dp" />
+                    android:minHeight="48dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <Spinner
                     android:id="@+id/spinner37"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
-                    android:minHeight="48dp" />
+                    android:minHeight="48dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
                     android:id="@+id/htext3"
@@ -145,6 +189,9 @@
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
                     android:minHeight="48dp"
+                    android:padding="10dp"
+                    android:textSize="32sp"
+                    android:textStyle="bold|italic"
                     android:text="3" />
 
             </LinearLayout>
@@ -167,21 +214,24 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
-                    android:minHeight="48dp" />
+                    android:minHeight="48dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <Spinner
                     android:id="@+id/spinner55"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
-                    android:minHeight="48dp" />
+                    android:minHeight="48dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <Spinner
                     android:id="@+id/spinner57"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
-                    android:minHeight="48dp" />
+                    android:minHeight="48dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
                     android:id="@+id/htext5"
@@ -189,6 +239,9 @@
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
                     android:minHeight="48dp"
+                    android:padding="10dp"
+                    android:textSize="32sp"
+                    android:textStyle="bold|italic"
                     android:text="5" />
             </LinearLayout>
 
@@ -203,28 +256,32 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
-                    android:minHeight="48dp" />
+                    android:minHeight="48dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <Spinner
                     android:id="@+id/spinner73"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
-                    android:minHeight="48dp" />
+                    android:minHeight="48dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <Spinner
                     android:id="@+id/spinner75"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
-                    android:minHeight="48dp" />
+                    android:minHeight="48dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <Spinner
                     android:id="@+id/spinner77"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
-                    android:minHeight="48dp" />
+                    android:minHeight="48dp"
+                    tools:ignore="SpeakableTextPresentCheck" />
 
                 <TextView
                     android:id="@+id/htext7"
@@ -232,37 +289,48 @@
                     android:layout_height="wrap_content"
                     android:minWidth="48dp"
                     android:minHeight="48dp"
+                    android:padding="10dp"
+                    android:textSize="32sp"
+                    android:textStyle="bold|italic"
                     android:text="7" />
             </LinearLayout>
 
         </LinearLayout>
 
+        <Button
+            android:id="@+id/button_check"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="Check" />
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/button"
+                android:id="@+id/button_reset"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="Reset" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/button_random"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Button" />
+                android:text="Random" />
 
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Button" />
         </LinearLayout>
+
+        <CheckBox
+            android:id="@+id/checkBoxAdvanced"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:text="Advanced chords" />
 
     </LinearLayout>
 

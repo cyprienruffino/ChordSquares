@@ -1,4 +1,4 @@
-package ovh.cyprienruffino.chordsquares;
+package ovh.soup.chordsquares;
 
 import java.util.ArrayList;
 import java.util.Arrays;
