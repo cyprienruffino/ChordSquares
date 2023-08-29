@@ -76,6 +76,21 @@ public class Note{
     public static ArrayList<RawNote> notes = new ArrayList<>(Arrays.asList(
             RawNote.C, RawNote.D, RawNote.E, RawNote.F, RawNote.G, RawNote.A, RawNote.B));
 
+    public static final Note[] authorizedNotes = {
+            new Note("Ab"),
+            new Note("A"),
+            new Note ("Bb"),
+            new Note("B"),
+            new Note("C"),
+            new Note("C#"),
+            new Note("D"),
+            new Note("Eb"),
+            new Note("E"),
+            new Note("F"),
+            new Note("F#"),
+            new Note("G")
+    };
+    
     public RawNote note;
     public Alteration alteration;
 

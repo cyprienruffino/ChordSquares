@@ -1,5 +1,7 @@
 package ovh.soup.chordsquares;
 
+import static ovh.soup.chordsquares.logic.Note.authorizedNotes;
+
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -30,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
     private  Spinner[][] spinnerGrid;
     private ArrayAdapter<String> spinnersAdapter;
-    private String[] availableNotes;
 
     private static final Nature[] basicNatures = {new Major(), new NaturalMinor(), new Seventh()};
     private static final Nature[] advancedNatures = {new Major(), new NaturalMinor(), new Seventh(), new MinorMajorSeventh(), new HalfDiminished(), new Diminished(), new AugmentedSeventh()};
@@ -54,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
         ((Spinner) findViewById(R.id.notespinner)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                currentNote = new Note(availableNotes[position]);
+                currentNote = authorizedNotes[position];
                 resetGrid();
             }
 
@@ -131,16 +132,11 @@ public class MainActivity extends AppCompatActivity {
     private void populateNotes() {
         Spinner noteSpinner = findViewById(R.id.notespinner);
         ArrayList<String> noteStringArray = new ArrayList<>();
-        for (Note.RawNote note: Note.RawNote.values()){
+        for (Note note: authorizedNotes){
             noteStringArray.add(note.toString());
-            noteStringArray.add(note.toString()+ Note.Alteration.FLAT);
-            if (!(note.toString().equals("B")) && !(note.toString().equals("E"))){
-                noteStringArray.add(note.toString()+ Note.Alteration.SHARP);
-            }
         }
-        this.availableNotes = noteStringArray.toArray(new String[0]);
-        noteSpinner.setAdapter(new ArrayAdapter<>(this, R.layout.spinner_list, availableNotes));
-        noteSpinner.setSelection(5);
+        noteSpinner.setAdapter(new ArrayAdapter<>(this, R.layout.spinner_list, noteStringArray.toArray(new String[0])));
+        noteSpinner.setSelection(4);
     }
 
     private void populateNatures() {
@@ -232,11 +228,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void buttonRandomOnClick(View v) {
-        this.currentNote = new Note(
-                Note.RawNote.values()[new Random().nextInt(Note.RawNote.values().length)],
-                Note.Alteration.values()[new Random().nextInt(Note.Alteration.values().length - 2)] // ignore doubleflats / doublesharps
-        );
-        ((Spinner) findViewById(R.id.notespinner)).setSelection(Arrays.asList(availableNotes).indexOf(currentNote.toString()));
+        this.currentNote = authorizedNotes[new Random().nextInt(authorizedNotes.length)];
+
+        ArrayList<String> noteStringArray = new ArrayList<>();
+        for (Note note: authorizedNotes) noteStringArray.add(note.toString());
+        ((Spinner) findViewById(R.id.notespinner)).setSelection(noteStringArray.indexOf(currentNote.toString()));
 
         int pickedNature = new Random().nextInt(natures.length);
         this.currentNature = natures[pickedNature];
