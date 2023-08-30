@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -52,29 +53,23 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.button_random).setOnClickListener(this::buttonRandomOnClick);
 
         ((CheckBox)findViewById(R.id.checkBoxAdvanced)).setOnCheckedChangeListener(this::checkBoxAdvancedOnClick);
-        ((Spinner) findViewById(R.id.notespinner)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        ((Spinner) findViewById(R.id.notespinner)).setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 currentNote = authorizedNotes[position];
                 resetGrid();
             }
-
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
-        ((Spinner) findViewById(R.id.naturespinner)).setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        ((Spinner) findViewById(R.id.naturespinner)).setOnItemSelectedListener(new OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 currentNature = natures[position];
                 resetGrid();
             }
-
             @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
+            public void onNothingSelected(AdapterView<?> parent) {}
         });
 
         this.currentNote = new Note("C");
