@@ -72,18 +72,20 @@ public class Chord {
     }
 
     public static Note computeNote(Note base, int degree, int target, Nature nature){
-        int rootPosition = Utils.mod(Note.notes.indexOf(base.note) - degree + 1 , Note.notes.size());
-        Note.RawNote targetNote = Note.notes.get(Utils.mod(rootPosition +  target - 1, Note.notes.size()));
+        Note.RawNote targetRawNote = Note.notes.get(Utils.mod(Note.notes.indexOf(base.note) +  target - degree, Note.notes.size()));
+
+        if (target < degree)
+            target += nature.intervals.length;
 
         int interval = 0;
         int naturalInterval = 0;
-        for (int i=0; i<(target-1); i++){
-            interval += nature.intervals[Utils.mod(i, nature.intervals.length)];
-            naturalInterval += Chord.naturalIntervals.get(Utils.mod(rootPosition + i, Chord.naturalIntervals.size()));
+        for (int i=0; i<target-degree; i++){
+            interval += nature.intervals[Utils.mod(i + degree - 1, nature.intervals.length)];
+            naturalInterval += Chord.naturalIntervals.get(Utils.mod(i + Note.notes.indexOf(base.note), Chord.naturalIntervals.size()));
         }
 
         return new Note(
-                targetNote,
+                targetRawNote,
                 Chord.alterations.get(interval - naturalInterval + base.alteration.value())
         );
     }
