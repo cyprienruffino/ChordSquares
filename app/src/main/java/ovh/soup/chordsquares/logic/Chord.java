@@ -46,17 +46,17 @@ public class Chord {
 
     public static Chord fromThird(Note third, Nature nature){
         Chord chord = new Chord(nature);
-        chord.root = Chord.computeNote(third, 3, 1, nature);
+        chord.root = Chord.computeNote(third, 3, 8, nature);
         chord.third = third;
-        chord.fifth = Chord.computeNote(third, 3, 5, nature);
+        chord.fifth = Chord.computeNote(third, 3, 12, nature);
         chord.seventh = Chord.computeNote(third, 3, 7, nature);
         return chord;
     }
 
     public static Chord fromFifth(Note fifth, Nature nature){
         Chord chord = new Chord(nature);
-        chord.root = Chord.computeNote(fifth, 5, 1, nature);
-        chord.third = Chord.computeNote(fifth, 5, 3, nature);
+        chord.root = Chord.computeNote(fifth, 5, 8, nature);
+        chord.third = Chord.computeNote(fifth, 5, 10, nature);
         chord.fifth = fifth;
         chord.seventh = Chord.computeNote(fifth, 5, 7, nature);
         return chord;
@@ -64,9 +64,9 @@ public class Chord {
 
     public static Chord fromSeventh(Note seventh, Nature nature){
         Chord chord = new Chord(nature);
-        chord.root = Chord.computeNote(seventh, 7, 1, nature);
-        chord.third = Chord.computeNote(seventh, 7, 3, nature);
-        chord.fifth = Chord.computeNote(seventh, 7, 5, nature);
+        chord.root = Chord.computeNote(seventh, 7, 8, nature);
+        chord.third = Chord.computeNote(seventh, 7, 10, nature);
+        chord.fifth = Chord.computeNote(seventh, 7, 12, nature);
         chord.seventh = seventh;
         return chord;
     }

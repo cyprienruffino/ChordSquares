@@ -194,6 +194,7 @@ public class MainActivity extends AppCompatActivity {
             values[i][2] = spinnerGrid[i][2].getSelectedItem().toString().equals(chords[i].third.toString());
             values[i][1] = spinnerGrid[i][1].getSelectedItem().toString().equals(chords[i].fifth.toString());
             values[i][0] = spinnerGrid[i][0].getSelectedItem().toString().equals(chords[i].seventh.toString());
+
         }
 
         return values;
